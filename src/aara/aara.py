@@ -56,7 +56,7 @@ def get_arxiv_articles(category):
 
     return date_str, articles
 
-class ARA(App):
+class AARA(App):
     CSS = """
     Horizontal {
         height: 1fr;
@@ -176,7 +176,7 @@ def main():
     parser.add_argument("category", help="ArXiv category to fetch articles from")
     args = parser.parse_args()
 
-    app = ARA(category=args.category)
+    app = AARA(category=args.category)
     app.run()
 
 if __name__ == "__main__":
