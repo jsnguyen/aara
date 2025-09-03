@@ -11,6 +11,7 @@ pip install aara
 ```
 
 For development only (using `uv`):
+
 ``` sh
 git clone https://github.com/jsnguyen/aara
 cd aara
@@ -21,13 +22,14 @@ uv run aara astro-ph
 
 Just run:
 
-``` sh 
+``` sh
 # For astro-ph
 aara astro-ph
 ```
 
 More generally:
-``` sh 
+
+``` sh
 aara <arXiv category>
 ```
 
