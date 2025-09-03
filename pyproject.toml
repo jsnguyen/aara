@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aara"
-version = "0.0.1"
+version = "0.0.2"
 description = "ArXiv Reader App"
 authors = [
   {name="Jayke Nguyen"},
@@ -15,6 +15,9 @@ dependencies = [
     "beautifulsoup4>=4.13.5",
     "textual>=6.1.0",
 ]
+
+[project.urls]
+Homepage = "https://github.com/jsnguyen/aara"
 
 [project.scripts]
 aara = "aara.aara:main"
