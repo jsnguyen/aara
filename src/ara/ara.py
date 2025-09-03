@@ -1,3 +1,5 @@
+import argparse
+
 import urllib.request
 from bs4 import BeautifulSoup
 
@@ -5,9 +7,9 @@ from textual.app import App, ComposeResult
 from textual.widgets import Footer, Header, ListView, ListItem, Static
 from textual.containers import VerticalGroup, Horizontal, VerticalScroll
 
-def get_astro_ph_articles():
+def get_arxiv_articles(category):
 
-    url = "https://arxiv.org/list/astro-ph/new"
+    url = f"https://arxiv.org/list/{category}/new"
 
     response = urllib.request.urlopen(url)
     response_text = response.read().decode("utf-8")
@@ -85,15 +87,16 @@ class ARA(App):
                 ("s", "open_url('pdf')", "Open PDF")
                ]
 
-    def __init__(self):
+    def __init__(self, category):
         super().__init__()
-        self.date_str, self.articles = get_astro_ph_articles()
+        self.category = category
+        self.date_str, self.articles = get_arxiv_articles(self.category)
 
     def compose(self) -> ComposeResult:
         yield Header()
 
         with VerticalGroup():
-            yield Static(f"[dim]{self.date_str} | Total Articles: {len(self.articles)}[/dim]")
+            yield Static(f"[dim]{self.category} | {self.date_str} | Total Articles: {len(self.articles)}[/dim]")
         with Horizontal():
 
             self.list_view = ListView(*[
@@ -168,6 +171,13 @@ class ARA(App):
         elif event.key in ("l", "right"):
             self.abstract_view.focus()
 
-if __name__ == "__main__":
-    app = ARA()
+def main():
+    parser = argparse.ArgumentParser(description="ArXiv Article Reader")
+    parser.add_argument("category", help="ArXiv category to fetch articles from")
+    args = parser.parse_args()
+
+    app = ARA(category=args.category)
     app.run()
+
+if __name__ == "__main__":
+    main()
