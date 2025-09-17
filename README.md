@@ -33,16 +33,26 @@ More generally:
 aara <arXiv category>
 ```
 
-## Command Line Arguments
+## Config
 
-None yet!
+Configs are stored at `~/.config/aara/aara.ini`.
+
+You can change the save name parameter by changing `num_words`, which currently takes the first 4 words of the title by default.
+
+You can also change the save directory by modifying the `downloads_folder` variable to a valid path.
 
 ## Bindings
 
 Basic vim bindings are implemented, `hjkl`, `g`, `G`, and `{}`. The arrow keys can also be used for navigation. Note that scrolling in abstract window using the vim bindings doesn't work quite yet, but this is a pretty rare occurrence.
 
-`a` opens the abstract of the article using your webbrowser
+`a` opens the abstract of the article using your web browser
 
-`s` will open the pdf of the article directly
+`s` will save the pdf to the location specified in the config, but if you haven't set anything it goes to `~/Downloads` by default. The naming scheme is `<arxiv id>_<year>_<first author last name>_<first four words title>.pdf`.
+
+`d` will open the pdf of the article directly
 
 `q` to quit
+
+## Misc
+
+There is also a state file stored at `~/.config/aara/state.ini` that tracks what pdf files you have already saved. This is not designed to be human-editable and is automatically loaded if it exists. It will overwrite every time you close the application.
