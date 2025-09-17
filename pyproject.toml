@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "aara"
-version = "0.0.4"
+version = "0.0.5"
 description = "ArXiv Reader App"
 authors = [
   {name="Jayke Nguyen"},
@@ -12,6 +12,7 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "aiohttp>=3.12.15",
     "beautifulsoup4>=4.13.5",
     "textual>=6.1.0",
 ]
