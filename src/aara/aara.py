@@ -141,8 +141,9 @@ class AARA(App):
         config = ConfigParser()
         config.read(self.saved_state_path)
         self.saved = {}
-        if config.sections()[0] == self.date_str:
-            self.saved[date] = config[date]["saved_ids"].split(",")
+        saved_date = config.sections()[0]
+        if saved_date == self.date_str:
+            self.saved[saved_date] = config[saved_date]["saved_ids"].split(",")
         else:
             self.saved[self.date_str] = []
 
